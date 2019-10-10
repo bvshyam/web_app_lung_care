@@ -8,11 +8,11 @@ import stripe
 import os
 import tensorflow as tf
 
-stripe_keys = {
-  'secret_key': os.environ['STRIPE_SECRET_KEY'],
-  'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
-}
-stripe.api_key = stripe_keys['secret_key']
+#stripe_keys = {
+#  'secret_key': os.environ['STRIPE_SECRET_KEY'],
+#  'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
+#}
+#stripe.api_key = stripe_keys['secret_key']
 
 model = build_model() # Build the model with the specific json and h5 weights file
 graph = tf.get_default_graph() # Get the default graph from tensorflow
