@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
         # https://stackoverflow.com/questions/23432478/flask-generate-password-hash-not-constant-output
         return check_password_hash(self.password_hash,password)
 
-def build_models():
+def build_model():
     model = tf.keras.models.load_model('/static/models/final_model.hdf5')
     return  model
 
