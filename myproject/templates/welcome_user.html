@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Vizion - Al/ML - Chatbot Responsive HTML5 Template</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+      <!-- Magnific Popup CSS-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css')}}">
+      <!-- Circle CSS-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/circle.css')}}">
+      <!-- Chatbot -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css')}}">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css')}}">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css')}}">
+   </head>
+   <body>
+      <!-- loading -->
+      <div id="loading">
+         <div id="loading-center">
+            <img src="{{ url_for('static', filename='images/loader.gif')}}" alt="loder">
+         </div>
+      </div>
+      <!-- loading End -->
+      <!--=================================
+         Header -->
+      <header id="header">
+         <div class="container">
+            <div class="row align-items-center">
+               <div class="col-lg-9">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <a class="navbar-brand" href="index.html">
+                     <img class="logo" src="{{ url_for('static', filename='images/logo.png')}}" alt="image">
+                     <img class="logo-stiky" src="{{ url_for('static', filename='images/logo-stiky.png')}}" alt="image">
+                     </a>
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                           <li class="nav-item">
+                              <a class="nav-link active" href="#banner">Home</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="#about">How it works</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="#pricing">Pricing</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="#clients">Clients</a>
+                           </li>
+                           <!-- <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Pages
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                 <a class="dropdown-item" href="pricing.html">Pricing</a>
+                                 <a class="dropdown-item" href="blog.html">Blog</a>
+                                 <a class="dropdown-item" href="blog-detail.html">Blog Details</a>
+                                 <a class="dropdown-item" href="feedback.html">Feedback</a>
+                                 <a class="dropdown-item" href="404-error.html">404 Error</a>
+                                 <a class="dropdown-item" href="comingsoon.html">Coming Soon</a>
+                                 <a class="dropdown-item" href="support.html">Support</a>
+                                 <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
+                              </div>
+                           </li> -->
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+               <div class="col-lg-3 text-right">
+           {% if current_user.is_authenticated %}
+             <p>Hi {{ current_user.username }}!</p>
+               <ul class="login"><li class="nav-link"><a href="{{ url_for('logout') }}">Log Out</a></li>
+           {% else %}
+                     <li class="d-inline"><a href="{{ url_for('login') }}">Login</a></li>
+                     <li class="d-inline active"><a href="{{ url_for('register') }}">Register</a></li>
+                  </ul>           {% endif %}
+
+               </div>
+            </div>
+         </div>
+      </header>
+      <!--=================================
+         Header -->
+      <!--=================================
+         Banner -->
+      <div id="banner" class="banner">
+         <div class="banner-text">
+            <div class="container">
+               <div class="row">
+                  <!--<div class="col-lg-5 col-md-12 col-sm-12">
+                     <h1 class="text-uppercase">ADD CHATBOT & AI  TO YOUR WEBSITE</h1>
+                     <h3 class="mt-4">Free Try for 30 Days. <span>Let’s Start</span></h3>
+                     <form>
+                        <div class="form-row align-items-center justify-content-lg-start justify-content-center">
+                           <div class="col-auto">
+                              <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="you@example.com">
+                           </div>
+                           <div class="col-auto">
+                              <button type="submit" class="button mb-2"><i class="ion-ios-paperplane"></i></button>
+                           </div>
+                        </div>
+                     </form>
+                  </div> -->
+
+
+
+
+                  <div class="col-lg-7 col-md-12 col-sm-12 text-right">
+                     <img class="img-fluid banner-img" src="{{ url_for('static', filename='images/banner/banner-img.png')}}" alt="image">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <img class="img-fluid banner-after" src="{{ url_for('static', filename='images/banner/banner-after.png')}}" alt="image">
+      </div>
+      <!--=================================
+         Banner -->
+      <!--=================================
+         MAIN CONTENT -->
+      <div class="main-content">
+<section class="iq-login-regi">
+  <div class="container">
+               <div class="row align-items-center">
+            <form class="box" method="post" action="/predict" enctype="multipart/form-data">
+                <div class="box__input">
+                    <h1>Upload image and test your result</h1>
+                    <center><input type="file" name="file" onchange="readURL(this);" /></center><br>
+                    <div><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
+                    <div><center><button type="submit" class="button">Predict</button></center></div>
+                      <canvas style="margin-top: 30px;" id="predictions-chart" width="400" height="250"></canvas>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+      </div>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+      <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+      <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+      <!-- Owl Carousel -->
+      <script src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+      <!-- Wow -->
+      <script src="{{ url_for('static', filename='js/wow.min.js')}}"></script>
+      <!-- App Min -->
+      <script src="{{ url_for('static', filename='js/app.min.js')}}"></script>
+      <!-- Circle -->
+      <script src="{{ url_for('static', filename='js/circle.js')}}"></script>
+      <!-- Chatbot -->
+      <script src="{{ url_for('static', filename='js/chatbot.js')}}"></script>
+      <!-- main -->
+      <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+      <!-- Custom -->
+      <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+       <script src="https://js.stripe.com/v3/"></script>
+      <script src="{{ url_for('static', filename='js/dropzone.js')}}"></script>
+      <script>
+            function readURL(input) {
+         if (input.files && input.files[0]) {
+             var reader = new FileReader();
+
+             reader.onload = function (e) {
+                 $('#blah').attr('src', e.target.result);
+             };
+
+             reader.readAsDataURL(input.files[0]);
+         }
+     }
+
+</script>
+   </body>
+</html>
