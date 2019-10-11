@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash,password)
 
 def build_model():
-    model = tf.keras.models.load_model('/static/models/final_model.hdf5')
+    model = tf.keras.models.load_model('/models/final_model.hdf5')
     return  model
 
 def load_image(img_path):
