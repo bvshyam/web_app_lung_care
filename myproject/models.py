@@ -41,11 +41,11 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash,password)
 
 def build_model():
-  with open('model_results/multi_disease_model.json', 'r') as json_file:
+  with open('static/models/multi_disease_model.json', 'r') as json_file:
     architecture = json.load(json_file)
     model = model_from_json(json.dumps(architecture))
 
-  model.load_weights('model_results/multi_disease_model_weight.h5')
+  model.load_weights('static/models/multi_disease_model_weight.h5')
   model._make_predict_function()
   return model
 
