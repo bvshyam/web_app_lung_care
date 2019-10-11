@@ -41,13 +41,13 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash,password)
 
 def build_model():
-  with open('multi_disease_model.json', 'r') as json_file:
+    json_file  = open('multi_disease_model.json','r')
     architecture = json.load(json_file)
     model = model_from_json(json.dumps(architecture))
 
-  model.load_weights('multi_disease_model_weight.h5')
-  model._make_predict_function()
-  return model
+    model.load_weights('multi_disease_model_weight.h5')
+    model._make_predict_function()
+    return model
 
 def load_image(img_path):
   img = image.load_img(img_path, target_size=(128, 128, 3))
