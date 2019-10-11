@@ -7,12 +7,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import stripe
 import os
 import tensorflow as tf
+from flask import Flask
 
 #stripe_keys = {
 #  'secret_key': os.environ['STRIPE_SECRET_KEY'],
 #  'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
 #}
 #stripe.api_key = stripe_keys['secret_key']
+
+app = Flask(__name__)
 
 model = build_model() # Build the model with the specific json and h5 weights file
 graph = tf.get_default_graph() # Get the default graph from tensorflow
