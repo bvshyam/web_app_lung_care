@@ -11,5 +11,5 @@ stripe==2.37.2
 Werkzeug==0.14.1
 numpy==1.16.5
 WTForms==2.1
-tensorflow==1.15.0rc3
+tensorflow==1.14
 gunicorn==19.9.0
