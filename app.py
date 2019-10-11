@@ -6,8 +6,8 @@ from myproject.forms import LoginForm, RegistrationForm
 from werkzeug.security import generate_password_hash, check_password_hash
 import stripe
 import os
-import tensorflow as tf
 from flask import Flask
+import tensorflow as tf # Import to build the graph for the model
 
 #stripe_keys = {
 #  'secret_key': os.environ['STRIPE_SECRET_KEY'],

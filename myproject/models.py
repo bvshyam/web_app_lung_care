@@ -2,7 +2,10 @@ from myproject import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
+from keras.preprocessing import image
+from keras.models import Sequential, model_from_json
+import json
 
 # By inheriting the UserMixin we get access to a lot of built-in attributes
 # which we will be able to call in our views!
@@ -38,14 +41,20 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash,password)
 
 def build_model():
-    model = tf.keras.models.load_model('/static/models/final_model.hdf5')
-    return  model
+  with open('model_results/multi_disease_model.json', 'r') as json_file:
+    architecture = json.load(json_file)
+    model = model_from_json(json.dumps(architecture))
+
+  model.load_weights('model_results/multi_disease_model_weight.h5')
+  model._make_predict_function()
+  return model
 
 def load_image(img_path):
-    img = tf.keras.preprocessing.image.load_img(img_path, target_size=(150, 150))
-    img = tf.keras.preprocessing.image.img_to_array(img)
-    img = np.expand_dims(img, axis=0)
-    img /= 255.
+  img = image.load_img(img_path, target_size=(128, 128, 3))
+  img = image.img_to_array(img)
+  img = np.expand_dims(img, axis=0)
+  img /= 255.
+  return img
 
 
 def predict_image(model,img_path):
