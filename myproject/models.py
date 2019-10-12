@@ -3,8 +3,8 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 import numpy as np
 #import tensorflow as tf
-from keras.preprocessing import image
-from keras.models import Sequential, model_from_json
+#from keras.preprocessing import image
+#from keras.models import Sequential, model_from_json
 import json
 
 # By inheriting the UserMixin we get access to a lot of built-in attributes
@@ -43,18 +43,19 @@ class User(db.Model, UserMixin):
 def build_model():
     json_file  = open('multi_disease_model.json','r')
     architecture = json.load(json_file)
-    model = model_from_json(json.dumps(architecture))
+    #model = model_from_json(json.dumps(architecture))
 
-    model.load_weights('multi_disease_model_weight.h5')
-    model._make_predict_function()
-    return model
+    #model.load_weights('multi_disease_model_weight.h5')
+    #model._make_predict_function()
+    #return model
 
 def load_image(img_path):
-  img = image.load_img(img_path, target_size=(128, 128, 3))
-  img = image.img_to_array(img)
-  img = np.expand_dims(img, axis=0)
-  img /= 255.
-  return img
+  #img = image.load_img(img_path, target_size=(128, 128, 3))
+  #img = image.img_to_array(img)
+  #img = np.expand_dims(img, axis=0)
+  #img /= 255.
+  pass
+  #return img
 
 
 def predict_image(model,img_path):

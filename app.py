@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import stripe
 import os
 from flask import Flask
-import tensorflow as tf # Import to build the graph for the model
+#import tensorflow as tf # Import to build the graph for the model
 
 #stripe_keys = {
 #  'secret_key': os.environ['STRIPE_SECRET_KEY'],
@@ -17,8 +17,8 @@ import tensorflow as tf # Import to build the graph for the model
 
 app = Flask(__name__)
 
-model = build_model() # Build the model with the specific json and h5 weights file
-graph = tf.get_default_graph() # Get the default graph from tensorflow
+#model = build_model() # Build the model with the specific json and h5 weights file
+#graph = tf.get_default_graph() # Get the default graph from tensorflow
 
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_AqeZev5riTgYUBXShKNJiZDG00Rdbu7N2j'
@@ -55,7 +55,7 @@ def predict():
 @app.route('/welcome')
 @login_required
 def welcome_user():
-    return render_template('welcome_user.html', key=stripe_keys['publishable_key'])
+    return render_template('welcome_user.html', key=STRIPE_PUBLISHABLE_KEY)
 
 @app.route('/logout')
 @login_required
