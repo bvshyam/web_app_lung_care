@@ -27,7 +27,7 @@ stripe.api_key=STRIPE_SECRET_KEY
 
 @app.route('/')
 def home():
-    return render_template('index.html',key=STRIPE_PUBLISHABLE_KEY)
+    return render_template('/myproject/templates/index.html',key=STRIPE_PUBLISHABLE_KEY)
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -137,4 +137,4 @@ def fileupload():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=80)
