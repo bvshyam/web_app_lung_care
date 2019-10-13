@@ -15,7 +15,7 @@ from flask import Flask
 #}
 #stripe.api_key = stripe_keys['secret_key']
 
-app = Flask(__name__, template_folder='/myproject/templates')
+app = Flask(__name__, template_folder='/myproject/templates',static_folder='/myproject/static')
 
 #model = build_model() # Build the model with the specific json and h5 weights file
 #graph = tf.get_default_graph() # Get the default graph from tensorflow
