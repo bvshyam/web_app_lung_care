@@ -1,4 +1,4 @@
-from myproject import app,db
+from myproject import db
 from flask import render_template, redirect, request, url_for, flash,abort
 from flask_login import login_user,login_required,logout_user
 from myproject.models import User, build_model, predict_image
@@ -15,7 +15,7 @@ from flask import Flask
 #}
 #stripe.api_key = stripe_keys['secret_key']
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='/myproject/templates')
 
 #model = build_model() # Build the model with the specific json and h5 weights file
 #graph = tf.get_default_graph() # Get the default graph from tensorflow
