@@ -1,8 +1,8 @@
-from myproject import db
+from scripts import db
 from flask import render_template, redirect, request, url_for, flash,abort
 from flask_login import login_user,login_required,logout_user
-from myproject.models import User, build_model, predict_image
-from myproject.forms import LoginForm, RegistrationForm
+from scripts.models import User, build_model, predict_image
+from scripts.forms import LoginForm, RegistrationForm
 from werkzeug.security import generate_password_hash, check_password_hash
 import stripe
 import os
@@ -15,7 +15,7 @@ from flask import Flask
 #}
 #stripe.api_key = stripe_keys['secret_key']
 
-app = Flask(__name__, template_folder='/myproject/templates',static_folder='/myproject/static')
+app = Flask(__name__)
 
 #model = build_model() # Build the model with the specific json and h5 weights file
 #graph = tf.get_default_graph() # Get the default graph from tensorflow
@@ -27,7 +27,7 @@ stripe.api_key=STRIPE_SECRET_KEY
 
 @app.route('/')
 def home():
-    return render_template('/myproject/templates/index.html',key=STRIPE_PUBLISHABLE_KEY)
+    return render_template('index.html')
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
